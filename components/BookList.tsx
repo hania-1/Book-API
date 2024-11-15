@@ -1,4 +1,3 @@
-// import { Image } from "lucide-react";
 import Image from "next/image";
 
 interface Book {
@@ -7,38 +6,36 @@ interface Book {
   author: string;
   Image: string;
   description: string;
-  inCart: boolean; // Track cart status
-  selected?: boolean; // Optional selected state
+  inCart: boolean; 
+  selected?: boolean; 
 }
 
 interface BookListProps {
   books: Book[];
   onDelete: (id: number) => void;
-  toggleCart: (id: number) => void; // Function to add/remove from cart
+  toggleCart: (id: number) => void; 
 }
 
 const BookList: React.FC<BookListProps> = ({ books, onDelete, toggleCart }) => {
   return (
-    <div className="max-w-4xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="max-w-4xl mx-auto p-6 flex space-x-6 overflow-x-auto">
       {books.map((book) => (
         <div
-          id={`book-${book.id}`} // Add an ID here for smooth scroll targeting
+          id={`book-${book.id}`} 
           key={book.id}
-          className={`bg-zinc-400 p-5 rounded-lg shadow-lg hover:shadow-xl transition-all ease-in-out transform hover:scale-105 ${book.selected ? 'border-4 border-blue-500' : ''}`}
+          className={`flex-shrink-0 bg-zinc-400 p-5 rounded-lg shadow-lg hover:shadow-xl transition-all ease-in-out transform hover:scale-105 ${
+            book.selected ? 'border-4 border-blue-500' : 'opacity-80' 
+          }`}
         >
-          {/* import Image from 'next/image'; */}
-
-<div className="bg-gray-100 h-48 w-full rounded-lg overflow-hidden mb-4">
-  <Image
-    src={book.Image || "/path/to/default/Image.png"}
-    alt={book.title}
-    className="w-full h-full object-cover object-center"
-    width={500} // You can specify the width if required
-    height={500} // Similarly, specify the height if required
-  />
-</div>
-
-
+          <div className="bg-gray-100 h-48 w-full rounded-lg overflow-hidden mb-4">
+            <Image
+              src={book.Image || "/path/to/default/Image.png"}
+              alt={book.title}
+              className="w-full h-full object-cover object-center"
+              width={500} 
+              height={500}
+            />
+          </div>
           <h3 className="text-xl font-semibold text-gray-800">{book.title}</h3>
           <p className="text-gray-600">{book.author}</p>
           <p className="text-gray-500 text-sm">{book.description}</p>
@@ -65,5 +62,4 @@ const BookList: React.FC<BookListProps> = ({ books, onDelete, toggleCart }) => {
     </div>
   );
 };
-
 export default BookList;
