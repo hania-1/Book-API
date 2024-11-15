@@ -10,7 +10,7 @@ type Book = {
   author: string;
   Image: string;
   description: string;
-  inCart: boolean; // Track cart status
+  inCart: boolean; 
 };
 
 export default function Home() {
@@ -45,7 +45,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 py-12">
+    <div className="min-h-screen  bg-gradient-to-b from-[#16222A] to-[#3A6073] py-12">
       <div className="container mx-auto px-4">
         {/* Pass setRecentlyAddedBook to BookForm */}
         <BookForm 
@@ -55,7 +55,7 @@ export default function Home() {
         />        
         {/* Books I Have Section */}
         <div className="my-8">
-          <h2 className="text-2xl font-bold text-white mb-4 "><i>Books I Have</i></h2>
+          <h2 className="text-2xl font-bold text-zinc-200 mb-4 text-center"><i>suggestion i have </i></h2>
           <BookList books={books} onDelete={handleDelete} toggleCart={toggleCart} />
         </div>
         
